@@ -1,0 +1,321 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: websitemanager
+  namespace: white
+  selfLink: /apis/apps/v1/namespaces/white/deployments/websitemanager
+  generation: 89
+  labels:
+    app: websitemanager
+    app.kubernetes.io/instance: websitemanager
+    backup: kube-noah
+  annotations:
+    deployment.kubernetes.io/revision: '75'
+    kubectl.kubernetes.io/last-applied-configuration: >
+      {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{"deployment.kubernetes.io/revision":"75"},"labels":{"app":"websitemanager","app.kubernetes.io/instance":"websitemanager","backup":"kube-noah"},"name":"websitemanager","namespace":"white","selfLink":"/apis/apps/v1/namespaces/white/deployments/websitemanager"},"spec":{"progressDeadlineSeconds":600,"replicas":4,"revisionHistoryLimit":10,"selector":{"matchLabels":{"app":"websitemanager"}},"strategy":{"rollingUpdate":{"maxSurge":"25%","maxUnavailable":"25%"},"type":"RollingUpdate"},"template":{"metadata":{"annotations":{"co.elastic.logs.json-logging/json.add_error_key":"true","co.elastic.logs.json-logging/json.keys_under_root":"true","co.elastic.logs.json-logging/json.message_key":"message_key","co.elastic.logs/enabled":"true"},"creationTimestamp":null,"labels":{"app":"websitemanager"}},"spec":{"containers":[{"env":[{"name":"APP","value":"websitemanager"},{"name":"PORT","value":"80"},{"name":"ALLOW_SKIPS","valueFrom":{"secretKeyRef":{"key":"ALLOW_SKIPS","name":"env-vars"}}},{"name":"AWS_ACCESS_KEY_ID","valueFrom":{"secretKeyRef":{"key":"AWS_ACCESS_KEY_ID","name":"env-vars"}}},{"name":"AWS_REGION","valueFrom":{"secretKeyRef":{"key":"AWS_REGION","name":"env-vars"}}},{"name":"AWS_SECRET_ACCESS_KEY","valueFrom":{"secretKeyRef":{"key":"AWS_SECRET_ACCESS_KEY","name":"env-vars"}}},{"name":"BO_RENDERER_URL","valueFrom":{"secretKeyRef":{"key":"BO_RENDERER_URL","name":"env-vars"}}},{"name":"BO_S3_URL","valueFrom":{"secretKeyRef":{"key":"BO_S3_URL","name":"env-vars"}}},{"name":"CHAT_V3","valueFrom":{"secretKeyRef":{"key":"CHAT_V3","name":"env-vars"}}},{"name":"CMS_RENDERER_URL","valueFrom":{"secretKeyRef":{"key":"CMS_RENDERER_URL","name":"env-vars"}}},{"name":"CRON_EXPRESSION","valueFrom":{"secretKeyRef":{"key":"CRON_EXPRESSION","name":"env-vars"}}},{"name":"CRON_GROUP_SCHEDULE_HOURS","valueFrom":{"secretKeyRef":{"key":"CRON_GROUP_SCHEDULE_HOURS","name":"env-vars"}}},{"name":"CRON_SCHEDULE_HOURS","valueFrom":{"secretKeyRef":{"key":"CRON_SCHEDULE_HOURS","name":"env-vars"}}},{"name":"DYNAMIC_PAGE_URL","valueFrom":{"secretKeyRef":{"key":"DYNAMIC_PAGE_URL","name":"env-vars"}}},{"name":"ENVIRONMENT_BUCKET_ENDPOINT","valueFrom":{"secretKeyRef":{"key":"ENVIRONMENT_BUCKET_ENDPOINT","name":"env-vars"}}},{"name":"ENVIRONMENT_BUCKET_NAME","valueFrom":{"secretKeyRef":{"key":"ENVIRONMENT_BUCKET_NAME","name":"env-vars"}}},{"name":"FIREBASE_KEY","valueFrom":{"secretKeyRef":{"key":"FIREBASE_KEY","name":"env-vars"}}},{"name":"FO_RENDERER_URL","valueFrom":{"secretKeyRef":{"key":"FO_RENDERER_URL","name":"env-vars"}}},{"name":"FO_S3_URL","valueFrom":{"secretKeyRef":{"key":"FO_S3_URL","name":"env-vars"}}},{"name":"GEFEN_ENV","valueFrom":{"secretKeyRef":{"key":"GEFEN_ENV","name":"env-vars"}}},{"name":"LEADS_SQS_DL_QUEUE","valueFrom":{"secretKeyRef":{"key":"LEADS_SQS_DL_QUEUE","name":"env-vars"}}},{"name":"LEADS_SQS_QUEUE","valueFrom":{"secretKeyRef":{"key":"LEADS_SQS_QUEUE","name":"env-vars"}}},{"name":"LOGGLY_INPUT_TOKEN","valueFrom":{"secretKeyRef":{"key":"LOGGLY_INPUT_TOKEN","name":"env-vars"}}},{"name":"LOGGLY_SUBDOMAIN","valueFrom":{"secretKeyRef":{"key":"LOGGLY_SUBDOMAIN","name":"env-vars"}}},{"name":"LOKALISE_API_KEY","valueFrom":{"secretKeyRef":{"key":"LOKALISE_API_KEY","name":"env-vars"}}},{"name":"LOKALISE_PROJECT_ID","valueFrom":{"secretKeyRef":{"key":"LOKALISE_PROJECT_ID","name":"env-vars"}}},{"name":"LP_RENDERER_URL","valueFrom":{"secretKeyRef":{"key":"LP_RENDERER_URL","name":"env-vars"}}},{"name":"MONGO_URL","valueFrom":{"secretKeyRef":{"key":"MONGO_URL","name":"env-vars"}}},{"name":"MONGO_URLS","valueFrom":{"secretKeyRef":{"key":"MONGO_URLS","name":"env-vars"}}},{"name":"NEW_RELIC_LICENSE_KEY","valueFrom":{"secretKeyRef":{"key":"NEW_RELIC_LICENSE_KEY","name":"env-vars"}}},{"name":"NEXTGEN_S3_URL","valueFrom":{"secretKeyRef":{"key":"NEXTGEN_S3_URL","name":"env-vars"}}},{"name":"NODE_ENV","valueFrom":{"secretKeyRef":{"key":"NODE_ENV","name":"env-vars"}}},{"name":"OPERATION_BUCKET_ENV_PART","valueFrom":{"secretKeyRef":{"key":"OPERATION_BUCKET_ENV_PART","name":"env-vars"}}},{"name":"PG_URL","valueFrom":{"secretKeyRef":{"key":"PG_URL","name":"env-vars"}}},{"name":"QUICKSIGHT_ACCESS_KEY_ID","valueFrom":{"secretKeyRef":{"key":"QUICKSIGHT_ACCESS_KEY_ID","name":"env-vars"}}},{"name":"QUICKSIGHT_ACCOUNT_ID","valueFrom":{"secretKeyRef":{"key":"QUICKSIGHT_ACCOUNT_ID","name":"env-vars"}}},{"name":"QUICKSIGHT_SECRET_KEY_ID","valueFrom":{"secretKeyRef":{"key":"QUICKSIGHT_SECRET_KEY_ID","name":"env-vars"}}},{"name":"REDIS_URL","valueFrom":{"secretKeyRef":{"key":"REDIS_URL","name":"env-vars"}}},{"name":"ROLLBAR_API_TOKEN","valueFrom":{"secretKeyRef":{"key":"ROLLBAR_API_TOKEN","name":"env-vars"}}},{"name":"RS_URL","valueFrom":{"secretKeyRef":{"key":"RS_URL","name":"env-vars"}}},{"name":"SES_PASS","valueFrom":{"secretKeyRef":{"key":"SES_PASS","name":"env-vars"}}},{"name":"SES_USER","valueFrom":{"secretKeyRef":{"key":"SES_USER","name":"env-vars"}}},{"name":"STELLAR_REDIS_URL","valueFrom":{"secretKeyRef":{"key":"STELLAR_REDIS_URL","name":"env-vars"}}},{"name":"USE_HTTP_SERVER","valueFrom":{"secretKeyRef":{"key":"USE_HTTP_SERVER","name":"env-vars"}}},{"name":"USE_LEADS_V3","valueFrom":{"secretKeyRef":{"key":"USE_LEADS_V3","name":"env-vars"}}},{"name":"androidBuildName","valueFrom":{"secretKeyRef":{"key":"androidBuildName","name":"env-vars"}}},{"name":"iosAppStoreId","valueFrom":{"secretKeyRef":{"key":"iosAppStoreId","name":"env-vars"}}},{"name":"iosBuildName","valueFrom":{"secretKeyRef":{"key":"iosBuildName","name":"env-vars"}}}],"image":"gefenonline/websitemanager:develop-111","imagePullPolicy":"IfNotPresent","livenessProbe":{"failureThreshold":3,"httpGet":{"path":"/health","port":80,"scheme":"HTTP"},"initialDelaySeconds":5,"periodSeconds":3,"successThreshold":1,"timeoutSeconds":1},"name":"websitemanager","resources":{"limits":{"memory":"700Mi"},"requests":{"cpu":"150m","memory":"400Mi"}},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File"}],"dnsPolicy":"ClusterFirst","imagePullSecrets":[{"name":"docker-registry"}],"restartPolicy":"Always","schedulerName":"default-scheduler","securityContext":{},"terminationGracePeriodSeconds":30}}},"status":null}
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: websitemanager
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: websitemanager
+      annotations:
+        co.elastic.logs.json-logging/json.add_error_key: 'true'
+        co.elastic.logs.json-logging/json.keys_under_root: 'true'
+        co.elastic.logs.json-logging/json.message_key: message_key
+        co.elastic.logs/enabled: 'true'
+    spec:
+      containers:
+        - name: websitemanager
+          image: 'gefenonline/websitemanager:develop-111'
+          env:
+            - name: APP
+              value: websitemanager
+            - name: PORT
+              value: '80'
+            - name: ALLOW_SKIPS
+              valueFrom:
+                secretKeyRef:
+                  name: env-vars
+                  key: ALLOW_SKIPS
+            - name: AWS_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: env-vars
+                  key: AWS_ACCESS_KEY_ID
+            - name: AWS_REGION
+              valueFrom:
+                secretKeyRef:
+                  name: env-vars
+                  key: AWS_REGION
+            - name: AWS_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: env-vars
+                  key: AWS_SECRET_ACCESS_KEY
+            - name: BO_RENDERER_URL
+              valueFrom:
+                secretKeyRef:
+                  name: env-vars
+                  key: BO_RENDERER_URL
+            - name: BO_S3_URL
+              valueFrom:
+                secretKeyRef:
+                  name: env-vars
+                  key: BO_S3_URL
+            - name: CHAT_V3
+              valueFrom:
+                secretKeyRef:
+                  name: env-vars
+                  key: CHAT_V3
+            - name: CMS_RENDERER_URL
+              valueFrom:
+                secretKeyRef:
+                  name: env-vars
+                  key: CMS_RENDERER_URL
+            - name: CRON_EXPRESSION
+              valueFrom:
+                secretKeyRef:
+                  name: env-vars
+                  key: CRON_EXPRESSION
+            - name: CRON_GROUP_SCHEDULE_HOURS
+              valueFrom:
+                secretKeyRef:
+                  name: env-vars
+                  key: CRON_GROUP_SCHEDULE_HOURS
+            - name: CRON_SCHEDULE_HOURS
+              valueFrom:
+                secretKeyRef:
+                  name: env-vars
+                  key: CRON_SCHEDULE_HOURS
+            - name: DYNAMIC_PAGE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: env-vars
+                  key: DYNAMIC_PAGE_URL
+            - name: ENVIRONMENT_BUCKET_ENDPOINT
+              valueFrom:
+                secretKeyRef:
+                  name: env-vars
+                  key: ENVIRONMENT_BUCKET_ENDPOINT
+            - name: ENVIRONMENT_BUCKET_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: env-vars
+                  key: ENVIRONMENT_BUCKET_NAME
+            - name: FIREBASE_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: env-vars
+                  key: FIREBASE_KEY
+            - name: FO_RENDERER_URL
+              valueFrom:
+                secretKeyRef:
+                  name: env-vars
+                  key: FO_RENDERER_URL
+            - name: FO_S3_URL
+              valueFrom:
+                secretKeyRef:
+                  name: env-vars
+                  key: FO_S3_URL
+            - name: GEFEN_ENV
+              valueFrom:
+                secretKeyRef:
+                  name: env-vars
+                  key: GEFEN_ENV
+            - name: LEADS_SQS_DL_QUEUE
+              valueFrom:
+                secretKeyRef:
+                  name: env-vars
+                  key: LEADS_SQS_DL_QUEUE
+            - name: LEADS_SQS_QUEUE
+              valueFrom:
+                secretKeyRef:
+                  name: env-vars
+                  key: LEADS_SQS_QUEUE
+            - name: LOGGLY_INPUT_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: env-vars
+                  key: LOGGLY_INPUT_TOKEN
+            - name: LOGGLY_SUBDOMAIN
+              valueFrom:
+                secretKeyRef:
+                  name: env-vars
+                  key: LOGGLY_SUBDOMAIN
+            - name: LOKALISE_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: env-vars
+                  key: LOKALISE_API_KEY
+            - name: LOKALISE_PROJECT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: env-vars
+                  key: LOKALISE_PROJECT_ID
+            - name: LP_RENDERER_URL
+              valueFrom:
+                secretKeyRef:
+                  name: env-vars
+                  key: LP_RENDERER_URL
+            - name: MONGO_URL
+              valueFrom:
+                secretKeyRef:
+                  name: env-vars
+                  key: MONGO_URL
+            - name: MONGO_URLS
+              valueFrom:
+                secretKeyRef:
+                  name: env-vars
+                  key: MONGO_URLS
+            - name: NEW_RELIC_LICENSE_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: env-vars
+                  key: NEW_RELIC_LICENSE_KEY
+            - name: NEXTGEN_S3_URL
+              valueFrom:
+                secretKeyRef:
+                  name: env-vars
+                  key: NEXTGEN_S3_URL
+            - name: NODE_ENV
+              valueFrom:
+                secretKeyRef:
+                  name: env-vars
+                  key: NODE_ENV
+            - name: OPERATION_BUCKET_ENV_PART
+              valueFrom:
+                secretKeyRef:
+                  name: env-vars
+                  key: OPERATION_BUCKET_ENV_PART
+            - name: PG_URL
+              valueFrom:
+                secretKeyRef:
+                  name: env-vars
+                  key: PG_URL
+            - name: QUICKSIGHT_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: env-vars
+                  key: QUICKSIGHT_ACCESS_KEY_ID
+            - name: QUICKSIGHT_ACCOUNT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: env-vars
+                  key: QUICKSIGHT_ACCOUNT_ID
+            - name: QUICKSIGHT_SECRET_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: env-vars
+                  key: QUICKSIGHT_SECRET_KEY_ID
+            - name: REDIS_URL
+              valueFrom:
+                secretKeyRef:
+                  name: env-vars
+                  key: REDIS_URL
+            - name: ROLLBAR_API_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: env-vars
+                  key: ROLLBAR_API_TOKEN
+            - name: RS_URL
+              valueFrom:
+                secretKeyRef:
+                  name: env-vars
+                  key: RS_URL
+            - name: SES_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: env-vars
+                  key: SES_PASS
+            - name: SES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: env-vars
+                  key: SES_USER
+            - name: STELLAR_REDIS_URL
+              valueFrom:
+                secretKeyRef:
+                  name: env-vars
+                  key: STELLAR_REDIS_URL
+            - name: USE_HTTP_SERVER
+              valueFrom:
+                secretKeyRef:
+                  name: env-vars
+                  key: USE_HTTP_SERVER
+            - name: USE_LEADS_V3
+              valueFrom:
+                secretKeyRef:
+                  name: env-vars
+                  key: USE_LEADS_V3
+            - name: androidBuildName
+              valueFrom:
+                secretKeyRef:
+                  name: env-vars
+                  key: androidBuildName
+            - name: iosAppStoreId
+              valueFrom:
+                secretKeyRef:
+                  name: env-vars
+                  key: iosAppStoreId
+            - name: iosBuildName
+              valueFrom:
+                secretKeyRef:
+                  name: env-vars
+                  key: iosBuildName
+          resources:
+            limits:
+              memory: 700Mi
+            requests:
+              cpu: 150m
+              memory: 400Mi
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 80
+              scheme: HTTP
+            initialDelaySeconds: 5
+            timeoutSeconds: 1
+            periodSeconds: 3
+            successThreshold: 1
+            failureThreshold: 3
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      imagePullSecrets:
+        - name: docker-registry
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600
+status:
+  observedGeneration: 89
+  replicas: 4
+  updatedReplicas: 4
+  readyReplicas: 4
+  availableReplicas: 4
+  conditions:
+    - type: Progressing
+      status: 'True'
+      lastUpdateTime: '2021-08-03T06:34:01Z'
+      lastTransitionTime: '2021-08-03T06:33:40Z'
+      reason: NewReplicaSetAvailable
+      message: ReplicaSet "websitemanager-7cdbcf6488" has successfully progressed.
+    - type: Available
+      status: 'True'
+      lastUpdateTime: '2021-08-04T13:57:07Z'
+      lastTransitionTime: '2021-08-04T13:57:07Z'
+      reason: MinimumReplicasAvailable
+      message: Deployment has minimum availability.
