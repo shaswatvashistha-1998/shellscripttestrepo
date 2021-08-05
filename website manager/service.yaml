@@ -1,0 +1,21 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: website-manager
+  namespace: white
+  selfLink: /api/v1/namespaces/white/services/website-manager
+  labels:
+    app: websitemanager
+    backup: kube-noah
+spec:
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  selector:
+    app: websitemanager
+  clusterIP: 172.20.81.71
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
